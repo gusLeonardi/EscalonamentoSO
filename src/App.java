@@ -24,7 +24,7 @@ public class App {
     /**
      * Método responsável por ler o arquivo .txt e converter para uma lista de objetos Processo.
      */
-    private static List<Processo> lerArquivoProcessos(String caminhoArquivo) {
+    static List<Processo> lerArquivoProcessos(String caminhoArquivo) {
         List<Processo> listaProcessos = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo))) {

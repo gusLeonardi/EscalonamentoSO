@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 import java.util.Queue;
 
 public class Processo {
@@ -13,7 +12,7 @@ public class Processo {
     private int tempoEspera;
     private int tempoTurnaround;
     private int tempoBloqueadoRestante;
-    private String estado;
+    private EEstadoProcesso estado;
 
     public Processo(int pid, int tempoChegada, int burstTotal, int prioridade, Queue<Integer> instantesIO) {
         this.pid = pid;
@@ -26,7 +25,7 @@ public class Processo {
         this.tempoExecutado = 0;
         this.tempoEspera = 0;
         this.tempoBloqueadoRestante = 0;
-        this.estado = "NOVO";
+        this.estado = EEstadoProcesso.NOVO;
     }
 
     public int getPid() {
@@ -37,11 +36,11 @@ public class Processo {
         return tempoChegada;
     }
 
-    public String getEstado() {
+    public EEstadoProcesso getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EEstadoProcesso estado) {
         this.estado = estado;
     }
 
@@ -64,4 +63,42 @@ public class Processo {
         }
     }
 
+    public void executar1Unidade() {
+        tempoExecutado++;
+        tempoRestante--;
+    }
+
+    public boolean terminou() {
+        return tempoRestante <= 0;
+    }
+
+    public void incrementarEspera() {
+        this.tempoEspera++;
+    }
+
+    public int getTempoEspera() {
+        return tempoEspera;
+    }
+
+    public void decrementarTempoBloqueado() {
+        if (this.tempoBloqueadoRestante > 0) {
+            this.tempoBloqueadoRestante--;
+        }
+    }
+
+    public int getTempoBloqueadoRestante() {
+        return tempoBloqueadoRestante;
+    }
+
+    public int getTempoTurnaround() {
+        return tempoTurnaround;
+    }
+
+    public void setTempoTurnaround(int tempoTurnaround) {
+        this.tempoTurnaround = tempoTurnaround;
+    }
+
+    public int getBurstTotal(){
+        return burstTotal;
+    }
 }
