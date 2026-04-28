@@ -101,4 +101,22 @@ public class Processo {
     public int getBurstTotal(){
         return burstTotal;
     }
+
+    public void setTempoBloqueadoRestante(int tempo) {
+        this.tempoBloqueadoRestante = tempo;
+    }
+
+    public int getTempoExecutado() {
+        return tempoExecutado;
+    }
+
+    public void setTempoExecutado(int tempo) {
+        this.tempoExecutado = tempo;
+    }
+
+    public void setTempoRestante(int tempo) {
+        this.tempoRestante = tempo;
+    }
+
+
 }
