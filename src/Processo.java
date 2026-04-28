@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Processo {
@@ -116,6 +117,10 @@ public class Processo {
 
     public void setTempoRestante(int tempo) {
         this.tempoRestante = tempo;
+    }
+
+    public Queue<Integer> getFilaIOCopia() {
+        return new LinkedList<>(this.instantesIO);
     }
 
 

@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Simulador {
-    private List<Processo> processosFuturos;
-    private List<Processo> filaProntos;
-    private List<Processo> filaBloqueados;
-    private List<Processo> processosFinalizados;
+public abstract class Simulador {
+    protected List<Processo> processosFuturos;
+    protected List<Processo> filaProntos;
+    protected List<Processo> filaBloqueados;
+    protected List<Processo> processosFinalizados;
     
-    private Processo processoNaCpu;
-    private int tempoAtual;
+    protected Processo processoNaCpu;
+    protected int tempoAtual;
 
     public Simulador(List<Processo> processos) {
         this.processosFuturos = new ArrayList<>(processos);
@@ -20,6 +20,8 @@ public class Simulador {
         this.tempoAtual = 0;
     }
 
+    protected abstract void escalonar();
+
     public void iniciar() {
         System.out.println("\n--- INICIANDO SIMULAÇÃO ---");
 
@@ -27,8 +29,10 @@ public class Simulador {
                !filaBloqueados.isEmpty() || processoNaCpu != null) {
             
             verificarChegadas();
-
             atualizarBloqueados();
+            atualizarTempoEspera();
+
+            escalonar();
 
             executarCpu();
 
@@ -36,6 +40,12 @@ public class Simulador {
         }
 
         System.out.println("--- SIMULAÇÃO CONCLUÍDA NO TEMPO " + tempoAtual + " ---");
+    }
+
+    private void atualizarTempoEspera() {
+        for (Processo p : filaProntos) {
+            p.incrementarEspera();
+        }
     }
 
     private void verificarChegadas() {
@@ -86,5 +96,13 @@ public class Simulador {
                 processoNaCpu = null;
             }
         }
+    }
+
+    public List<Processo> getProcessosFinalizados() {
+        return processosFinalizados;
+    }
+
+    public int getTempoAtual() {
+        return tempoAtual;
     }
 }
