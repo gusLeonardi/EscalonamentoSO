@@ -1,3 +1,10 @@
+/**
+ * Processo.java
+ *
+ * Representa um processo no simulador de escalonamento.
+ * Contém atributos de chegada, burst, prioridade, estados e I/O.
+ * Esta classe também controla o tempo de execução, espera e bloqueio.
+ */
 import java.util.LinkedList;
 import java.util.Queue;
 

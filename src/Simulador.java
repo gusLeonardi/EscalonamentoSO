@@ -1,3 +1,22 @@
+/**
+ * Simulador.java
+ *
+ * Classe base abstrata que implementa o fluxo comum de uma simulação de
+ * escalonamento de processos. Cada algoritmo específico herda desta classe
+ * e define apenas sua política de escolha de processo através de escalonar().
+ *
+ * Responsabilidades:
+ * - Gerenciar chegadas de processos no tempo correto
+ * - Atualizar estados de processos bloqueados por I/O
+ * - Contabilizar tempo de espera dos processos prontos
+ * - Executar a CPU por tempo unitário
+ * - Detectar término de processo e transições de estado
+ *
+ * Por que é importante:
+ * - Evita duplicação de lógica nos diferentes algoritmos
+ * - Garante que todos os algoritmos sejam comparados sob o mesmo modelo
+ * - Facilita a manutenção e a extensão de novos escalonadores
+ */
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

@@ -1,3 +1,18 @@
+/**
+ * MLQ.java
+ *
+ * Implementa o algoritmo Multi-Level Queue com duas prioridades.
+ *
+ * Estrutura:
+ * - Fila 1: processos de alta prioridade (prioridade == 1) usando Round-Robin
+ *   com quantum fixo de 4 unidades.
+ * - Fila 2: processos de baixa prioridade executando em FCFS.
+ *
+ * Importância:
+ * - Mostra como o escalonador pode priorizar processos críticos
+ * - Permite estudar trade-offs entre justiça e responsividade
+ * - Demonstra preempção seletiva: fila 2 só recebe CPU quando fila 1 está vazia
+ */
 import java.util.ArrayList;
 import java.util.List;
 

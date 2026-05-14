@@ -1,3 +1,17 @@
+/**
+ * SRTF.java
+ *
+ * Implementa o algoritmo Shortest Remaining Time First.
+ *
+ * O escalonador escolhe sempre o processo com menor tempo restante de CPU.
+ * Se um processo mais curto chegar enquanto a CPU está ocupada, ele preempte o
+ * processo atual e o coloca de volta na fila de prontos.
+ *
+ * Destaques:
+ * - Preemptivo: troca de processo pode acontecer a qualquer instante
+ * - Minimiza o tempo de espera médio em muitos cenários
+ * - Pode causar starvation de processos longos se chegarem muitos curtos
+ */
 import java.util.List;
 
 public class SRTF extends Simulador {
@@ -24,9 +38,9 @@ public class SRTF extends Simulador {
         } else {
             if (maisCurto.getTempoRestante() < processoNaCpu.getTempoRestante()) {
                 processoNaCpu.setEstado(EEstadoProcesso.PRONTO);
-                filaProntos.add(processoNaCpu); 
+                filaProntos.add(processoNaCpu);
 
-                processoNaCpu = maisCurto; 
+                processoNaCpu = maisCurto;
                 filaProntos.remove(maisCurto);
                 processoNaCpu.setEstado(EEstadoProcesso.EXECUTANDO);
             }

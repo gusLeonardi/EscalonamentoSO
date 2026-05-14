@@ -1,3 +1,17 @@
+/**
+ * RRPreditivo.java
+ *
+ * Implementa o algoritmo Round-Robin preditivo com quantum adaptativo.
+ * Cada processo possui uma estimativa τ do seu próximo surto de CPU.
+ *
+ * O escalonador escolhe o processo com menor τ da fila de prontos e aplica
+ * um quantum igual à previsão arredondada.
+ *
+ * Destaques:
+ * - Não usa quantum fixo igual para todos os processos
+ * - Permite comparação com FCFS e SRTF em comportamento interativo
+ * - Demonstra como previsões podem orientar escalonamento preemptivo
+ */
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
